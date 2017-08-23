@@ -1,6 +1,6 @@
 # testdatagen.py
 
-This simple Python testdatagen module generates pipe ('|') delimited test data with the following fields - 
+This simple Python module generates pipe ('|') delimited test data with the following fields - 
 firstname, lastname, email, streetAddress, ZipCode, City, State, StateAbrv, County, Latitude, Longitude
 
 The intention of this module is to provide a simple way to quickly generate person test data. 
