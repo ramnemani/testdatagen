@@ -25,3 +25,4 @@ It needs the included csv files to generate the test data. These files are liste
 	testdata_ln.csv
 	testdata_st.csv
 	us_postal_codes.csv
+Of the above csv files, the first four are created using faker module. The last file is publicly available information.
