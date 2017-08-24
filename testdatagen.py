@@ -16,6 +16,11 @@ Usage :
 import random
 # import timeit
 import csv
+import os
+curdir = os.getcwd()
+
+print curdir
+
 
 ##
 ## This module includes five text fies that contain pre generated data that will be used
@@ -25,30 +30,30 @@ import csv
 ##
 list_size = 50000
 
-with open('us_postal_codes.csv', 'rb') as infile:
+with open('data/us_postal_codes.csv', 'rb') as infile:
     reader = csv.reader(infile)
     next(reader)
     zip_codes = list(reader)
     zip_cnt = len(zip_codes)
 
-with open( 'testdata_fn.csv', 'rb') as infile:
+with open('data/testdata_fn.csv', 'rb') as infile:
     reader = csv.reader(infile)
     first_names = list(reader)
 
-with open( 'testdata_st.csv', 'rb') as infile:
+with open('data/testdata_st.csv', 'rb') as infile:
     reader = csv.reader(infile)
     street_address = list(reader)
 
-with open( 'testdata_ln.csv', 'rb') as infile:
+with open('data/testdata_ln.csv', 'rb') as infile:
     reader = csv.reader(infile)
     last_names = list(reader)
 
-with open( 'testdata_dn.csv', 'rb') as infile:
+with open('data/testdata_dn.csv', 'rb') as infile:
     reader = csv.reader(infile)
     domain_names = list(reader)
 
-def fake_dataset(writer, rec_cnt):
 
+def fake_dataset(writer, rec_cnt):
     random.shuffle(zip_codes)
     random.shuffle(first_names)
     random.shuffle(street_address)
@@ -58,19 +63,19 @@ def fake_dataset(writer, rec_cnt):
     st = 0
     en = rec_cnt
     testdatalist = []
-    for i in range(st,en):
+    for i in range(st, en):
 
         ln = last_names[i][0]
         fn = first_names[i][0]
 
         x = first_names[i] + \
-        last_names[i] + \
-        [ln[0]+fn + '@' + domain_names[i][0]] + \
-        street_address[i]
+            last_names[i] + \
+            [ln[0] + fn + '@' + domain_names[i][0]] + \
+            street_address[i]
 
-        if i >= zip_cnt :
+        if i >= zip_cnt:
             j = i - zip_cnt
-        else :
+        else:
             j = i
 
         x = x + zip_codes[j]
@@ -80,6 +85,7 @@ def fake_dataset(writer, rec_cnt):
     for item in testdatalist:
         writer.writerow(item)
 
+
 def test_data(filename, recreq):
     """ Generates test data containing firstname, lastname, email, streetAddress
     , ZipCode, City, State, StateAbrv, County, Latitude, Longitude
@@ -88,18 +94,18 @@ def test_data(filename, recreq):
     2. recreq : the number of test data records needed
     example : testdatagen.test_data('persons.csv', 300)
     """
-    outfile = open( filename, 'wb')
+    outfile = open(filename, 'wb')
     writer = csv.writer(outfile, delimiter="|")
 
-##
-## The folowing while loop is needed to address the scenarios where the number of tests data records
-## requested is greater than the value of list size variable defined at the top.
-##
+    ##
+    ## The folowing while loop is needed to address the scenarios where the number of tests data records
+    ## requested is greater than the value of list size variable defined at the top.
+    ##
     recgen = 0
-    while recgen < recreq :
-        if recreq - recgen > list_size :
+    while recgen < recreq:
+        if recreq - recgen > list_size:
             reccnt = list_size
-        else :
+        else:
             reccnt = recreq - recgen
 
         fake_dataset(writer, reccnt)
@@ -108,8 +114,9 @@ def test_data(filename, recreq):
 
     outfile.close()
 
+
 if __name__ == '__main__':
     # start_time = timeit.default_timer()
-    test_data('testdata.csv', 5000)
+    test_data('persons.csv', 5000)
     # elapsed = timeit.default_timer() - start_time
     # print ('time :' + str('%12.6f' % elapsed))
