@@ -16,6 +16,7 @@ Usage :
 import random
 import timeit
 import csv
+from os import path
 
 ##
 ## This module includes five text fies that contain pre generated data that will be used
@@ -25,25 +26,30 @@ import csv
 ##
 list_size = 50000
 
-with open('data/us_postal_codes.csv', 'rb') as infile:
+here = path.abspath(path.dirname(__file__))
+
+csvpath = path.join(here, 'data')
+print csvpath
+
+with open(path.join(csvpath, 'us_postal_codes.csv'), 'rb') as infile:
     reader = csv.reader(infile)
     next(reader)
     zip_codes = list(reader)
     zip_cnt = len(zip_codes)
 
-with open('data/testdata_fn.csv', 'rb') as infile:
+with open(path.join(csvpath,'testdata_fn.csv'), 'rb') as infile:
     reader = csv.reader(infile)
     first_names = list(reader)
 
-with open('data/testdata_st.csv', 'rb') as infile:
+with open(path.join(csvpath,'testdata_st.csv'), 'rb') as infile:
     reader = csv.reader(infile)
     street_address = list(reader)
 
-with open('data/testdata_ln.csv', 'rb') as infile:
+with open(path.join(csvpath,'testdata_ln.csv'), 'rb') as infile:
     reader = csv.reader(infile)
     last_names = list(reader)
 
-with open('data/testdata_dn.csv', 'rb') as infile:
+with open(path.join(csvpath,'testdata_dn.csv'), 'rb') as infile:
     reader = csv.reader(infile)
     domain_names = list(reader)
 
