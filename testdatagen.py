@@ -14,13 +14,8 @@ Usage :
 
 """
 import random
-# import timeit
+import timeit
 import csv
-import os
-curdir = os.getcwd()
-
-print curdir
-
 
 ##
 ## This module includes five text fies that contain pre generated data that will be used
@@ -94,6 +89,9 @@ def test_data(filename, recreq):
     2. recreq : the number of test data records needed
     example : testdatagen.test_data('persons.csv', 300)
     """
+    start_time = timeit.default_timer()
+
+
     outfile = open(filename, 'wb')
     writer = csv.writer(outfile, delimiter="|")
 
@@ -112,11 +110,13 @@ def test_data(filename, recreq):
 
         recgen = recgen + reccnt
 
+    elapsed = timeit.default_timer() - start_time
+
+    # print ('time :' + str('%12.6f' % elapsed))
+
+    print('Sucessfully created ' + filename + ' with ' + str(recreq) +
+          ' records in ' + str('%7.2f' % elapsed).lstrip() + ' seconds')
     outfile.close()
 
-
 if __name__ == '__main__':
-    # start_time = timeit.default_timer()
     test_data('persons.csv', 5000)
-    # elapsed = timeit.default_timer() - start_time
-    # print ('time :' + str('%12.6f' % elapsed))
