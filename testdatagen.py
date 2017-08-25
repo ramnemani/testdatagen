@@ -3,7 +3,7 @@ firstname, lastname, email, streetAddress, ZipCode, City, State, StateAbrv, Coun
 
 Usage :
 
-    import testdatagen
+    from testdatagen import testdatagen
     testdatagen.test_data(filename, recordcount)
 
     example : testdatagen.test_data('persons.csv', 300)
@@ -26,9 +26,9 @@ from os import path
 ##
 list_size = 50000
 
-abspath = path.abspath(path.dirname(__file__))
+here = path.abspath(path.dirname(__file__))
 
-csvpath = path.join(abspath, 'data')
+csvpath = path.join(here, 'data')
 
 with open(path.join(csvpath, 'us_postal_codes.csv'), 'rb') as infile:
     reader = csv.reader(infile)

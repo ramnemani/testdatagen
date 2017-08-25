@@ -13,7 +13,7 @@ Usage :
 
 ::
 
-    import testdatagen
+    from testdatagen import testdatagen
     testdatagen.test_data(filename, recordcount)
 
     example : testdatagen.test_data('persons.csv', 300)

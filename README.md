@@ -8,7 +8,7 @@ It can generate a million record test file in just under 20 seconds.
 
 Usage :
 
-    import testdatagen
+    from testdataden import testdatagen
     testdatagen.test_data(filename, recordcount)
     
     example : testdatagen.test_data('persons.csv', 300)
