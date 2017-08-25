@@ -29,7 +29,6 @@ list_size = 50000
 here = path.abspath(path.dirname(__file__))
 
 csvpath = path.join(here, 'data')
-print csvpath
 
 with open(path.join(csvpath, 'us_postal_codes.csv'), 'rb') as infile:
     reader = csv.reader(infile)
