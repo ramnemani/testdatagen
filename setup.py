@@ -13,20 +13,21 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
   name = 'testdatagen',
   packages = ['testdatagen'], 
-  version = '0.1.16',
-  description = 'Generates pipe delimited test data of names and addresses',
+  version = '0.1.19',
+  description = 'Generates pipe delimited test data',
   long_description=long_description,
   author = 'Ramakrishna Nemani',
   author_email = 'ram.nemani@gmail.com',
   license='MIT',
   url = 'https://github.com/ramnemani/testdatagen', 
-  download_url = 'https://github.com/ramnemani/testdatagen/archive/0.1.16.tar.gz',
+  download_url = 'https://github.com/ramnemani/testdatagen/archive/0.1.19.tar.gz',
   package_data={'testdatagen': ['data/*.csv']},
   keywords = ['testdata', 'test data', 'fake'], 
   classifiers = [
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
         'Intended Audience :: Developers',
         'Topic :: Utilities'
         ]
