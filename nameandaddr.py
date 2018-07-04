@@ -10,8 +10,7 @@ Usage :
 
     This example will create  a file named 'persons.csv' in the  directory where this program is located.
     The file 'persons.csv' will have 300 lines.
-    It is recommended that you provide a fuly qualified file name (i.e. /path/filename)
-    otherwise the file will be created in the current directory
+    Otherwise it is recommended that you provide a fully qualified file name (i.e. /path/filename)
 
 """
 import random
